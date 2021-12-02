@@ -1,16 +1,26 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import Utils
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Count the number of times the depth increases
+def part_one():
+    heights = Utils.read_file_as_ints("../Input/1-12-21.txt")
+    count = len([x for x in range(1, len(heights)) if heights[x] > heights[x-1]])
+    print(count)
 
 
-# Press the green button in the gutter to run the script.
+# Count the number of times the 3 digit sliding window increases
+def part_two():
+    heights = Utils.read_file_as_ints("../Input/1-12-21.txt")
+    count = len([
+        x
+        for x
+        in range(3, len(heights))
+        if heights[x] + heights[x-1] + heights[x-2] > heights[x-1] + heights[x-2] + heights[x-3]
+    ])
+    print(count)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    part_one()
+    part_two()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
